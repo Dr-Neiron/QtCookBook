@@ -255,3 +255,13 @@ void MainWindow::on_register_pushButton_clicked()
 {
 
 }
+
+void MainWindow::on_about_triggered()
+{
+    QMessageBox::about(this, tr("About QtCookBook"), tr("This program created by M.Suldin and Mariya Tsviga"));
+}
+
+void MainWindow::on_main_tableView_customContextMenuRequested(const QPoint &pos)
+{
+
+}

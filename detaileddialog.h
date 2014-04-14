@@ -15,6 +15,9 @@ public:
     explicit DetailedDialog(QString name, QString consist, QString description, QWidget *parent = 0);
     ~DetailedDialog();
     
+private slots:
+    void on_print_pushButton_clicked();
+
 private:
     Ui::DetailedDialog *ui;
 };
