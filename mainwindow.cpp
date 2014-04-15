@@ -196,6 +196,8 @@ void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
     connect(&detailedDialog, SIGNAL(addingFavorite(int)), &favorites, SLOT(add(int)));
     connect(&detailedDialog, SIGNAL(remFavorite(int)), &favorites, SLOT(remove(int)));
     detailedDialog.exec();
+    if (ui->favorite_pushButton->isChecked())
+        applyFilter(ID_FILTER, 1);
 }
 
 void MainWindow::on_reset_pushButton_clicked()
