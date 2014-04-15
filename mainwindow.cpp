@@ -204,6 +204,7 @@ void MainWindow::on_reset_pushButton_clicked()
     ui->season_comboBox->setCurrentIndex(0);
     ui->contry_comboBox->setCurrentIndex(0);
     ui->vegetarian_pushButton->setChecked(false);
+    model->setFilter("");
 }
 
 void MainWindow::on_types_comboBox_currentIndexChanged(int index)
@@ -239,6 +240,15 @@ void MainWindow::on_spinBox_valueChanged(int arg1)
 void MainWindow::on_random_pushButton_clicked()
 {
     on_reset_pushButton_clicked();
+    QStringList randId;
+    QSqlQuery query(QString("SELECT * FROM (SELECT id FROM bluda WHERE bluda.type = 1 ORDER BY RANDOM() LIMIT 1)") +
+                    QString(" UNION ALL ") +
+                    QString("SELECT * FROM (SELECT id FROM bluda WHERE bluda.type = 2 ORDER BY RANDOM() LIMIT 1)") +
+                    QString(" UNION ALL ") +
+                    QString("SELECT * FROM (SELECT id FROM bluda WHERE bluda.type = 3 ORDER BY RANDOM() LIMIT 1)"));
+    while (query.next())
+        randId.append(query.value(0).toString());
+    model->setFilter(QString("bluda.id IN ( ") + randId.join(", ") + QString(" )"));
 }
 
 void MainWindow::on_register_pushButton_clicked()

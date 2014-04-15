@@ -16,7 +16,8 @@ namespace Defines
         SEASON_FILTER = 5,
         TYPES_FILTER = 6,
         CONTRY_FILTER = 7,
-        VEGETARIAN_FILTER = 9
+        VEGETARIAN_FILTER = 9,
+        RANDOM_FILTER = 10
     };
 
 }
