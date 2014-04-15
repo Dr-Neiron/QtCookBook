@@ -16,12 +16,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     detaileddialog.cpp \
-    filter.cpp
+    filter.cpp \
+    userfavorites.cpp
 
 HEADERS  += mainwindow.h \
     defines.h \
     detaileddialog.h \
-    filter.h
+    filter.h \
+    userfavorites.h
 
 FORMS    += mainwindow.ui \
     detaileddialog.ui

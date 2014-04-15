@@ -15,6 +15,9 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="favorite_pushButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -846,8 +849,8 @@
     <property name="title">
      <string>Справка</string>
     </property>
-    <addaction name="about"/>
     <addaction name="help"/>
+    <addaction name="about"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>

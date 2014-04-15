@@ -3,6 +3,7 @@
 
 #include "defines.h"
 #include "filter.h"
+#include "userfavorites.h"
 #include <QMainWindow>
 #include <QtSql/QtSql>
 #include <QtSql/QSqlDatabase>
@@ -33,11 +34,8 @@ private slots:
     void on_favorite_pushButton_clicked(bool checked);
     void on_spinBox_valueChanged(int arg1);
     void on_random_pushButton_clicked();
-
     void on_register_pushButton_clicked();
-
     void on_about_triggered();
-
     void on_main_tableView_customContextMenuRequested(const QPoint &pos);
 
 private:
@@ -45,12 +43,12 @@ private:
     QSqlDatabase                db;
     QSqlRelationalTableModel    *model;
     Filter                      filterClass;
+    UserFavorites               favorites;
     bool                        isAdminLoggedIn;
     QString                     userName;
 
     void adminLogin();
     void userLogin();
-    void loadMainTable();
     void applyFilter(filters_t filter, int id);
     void prepareModel();
 };

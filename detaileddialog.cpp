@@ -4,7 +4,7 @@
 #include <QPrintDialog>
 #include <QDebug>
 
-DetailedDialog::DetailedDialog(QString name, QString consist, QString description, QWidget *parent) :
+DetailedDialog::DetailedDialog(int id, QString name, QString consist, QString description, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DetailedDialog)
 {
@@ -12,11 +12,18 @@ DetailedDialog::DetailedDialog(QString name, QString consist, QString descriptio
     ui->name_label->setText(name);
     ui->consist_textBrowser->append(consist);
     ui->description_textBrowser->append(description);
+    this->id = id;
 }
 
 DetailedDialog::~DetailedDialog()
 {
     delete ui;
+}
+
+void DetailedDialog::setFavorite()
+{
+    ui->addToFav_pushButton->setChecked(true);
+    ui->addToFav_pushButton->setText(tr("Remove from favorites"));
 }
 
 void DetailedDialog::on_print_pushButton_clicked()
@@ -34,4 +41,18 @@ void DetailedDialog::on_print_pushButton_clicked()
 
     if (QDialog::Accepted == pd.exec())
         te.print(&printer);
+}
+
+void DetailedDialog::on_addToFav_pushButton_clicked(bool checked)
+{
+    if (checked)
+    {
+        emit addingFavorite(id);
+        ui->addToFav_pushButton->setText(tr("Remove from favorites"));
+    }
+    else
+    {
+        emit remFavorite(id);
+        ui->addToFav_pushButton->setText(tr("To favorites"));
+    }
 }

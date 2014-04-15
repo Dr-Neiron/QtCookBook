@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    on_logout_pushButton_clicked();
     if (db.isOpen())
         db.close();
     if (model)
@@ -41,14 +42,13 @@ void MainWindow::on_login_pushButton_clicked()
     userName = ui->login_lineEdit->text();
     QString pass = ui->password_lineEdit->text();
     QSqlQuery query;
-    query.exec(QString("SELECT role FROM users WHERE name = '%1' AND pass = '%2'")
+    query.exec(QString("SELECT role, favorites FROM users WHERE name = '%1' AND pass = '%2'")
                .arg(userName)
                .arg(pass));
 
     if (query.next())
     {
-        bool ok;
-        switch (query.value(0).toInt(&ok))
+        switch (query.value(0).toInt())
         {
         case ADMINISTRATOR_ROLE:
             adminLogin();
@@ -59,6 +59,8 @@ void MainWindow::on_login_pushButton_clicked()
         default:
             qDebug() << "wrong role for user " << userName;
         }
+        favorites.init(query.value(1).toString());
+        ui->favorite_pushButton->setEnabled(true);
     }
     else
         QMessageBox::information(this, tr("Login incorrect"), tr("Login name or password is incorrect"));
@@ -74,26 +76,6 @@ void MainWindow::userLogin()
 {
     ui->login_stackedWidget->setCurrentIndex(1);
     ui->userName_label->setText(userName);
-    loadMainTable();
-}
-
-void MainWindow::loadMainTable()
-{
-    model->select();
-    ui->main_tableView->setItemDelegate(new QSqlRelationalDelegate(ui->main_tableView));
-    ui->main_tableView->hideColumn(0);
-    ui->main_tableView->hideColumn(8);
-
-    ui->main_tableView->setColumnWidth(0,20);
-    ui->main_tableView->setColumnWidth(1,150);
-    ui->main_tableView->setColumnWidth(2,150);
-    ui->main_tableView->setColumnWidth(3,200);
-    ui->main_tableView->setColumnWidth(4,100);
-    ui->main_tableView->setColumnWidth(5,100);
-    ui->main_tableView->setColumnWidth(6,100);
-    ui->main_tableView->setColumnWidth(7,100);
-    ui->main_tableView->setColumnWidth(8,20);
-    ui->main_tableView->setColumnWidth(9,60);
 }
 
 void MainWindow::applyFilter(filters_t filter, int id)
@@ -111,6 +93,9 @@ void MainWindow::applyFilter(filters_t filter, int id)
     }
     case DURATION_FILTER:
         filterClass.applyNew(filter, QString::number(id,10));
+        break;
+    case ID_FILTER:
+        filterClass.applyNew(ID_FILTER, favorites.asSqlSet());
         break;
     default:
         qDebug() << "Error argument in applyFilter(...) call:" << filter;
@@ -151,6 +136,22 @@ void MainWindow::prepareModel()
     ui->main_tableView->setAlternatingRowColors(true);
     ui->main_tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
+    model->select();
+    ui->main_tableView->setItemDelegate(new QSqlRelationalDelegate(ui->main_tableView));
+    ui->main_tableView->hideColumn(0);
+    ui->main_tableView->hideColumn(8);
+
+    ui->main_tableView->setColumnWidth(0,20);
+    ui->main_tableView->setColumnWidth(1,150);
+    ui->main_tableView->setColumnWidth(2,150);
+    ui->main_tableView->setColumnWidth(3,200);
+    ui->main_tableView->setColumnWidth(4,100);
+    ui->main_tableView->setColumnWidth(5,100);
+    ui->main_tableView->setColumnWidth(6,100);
+    ui->main_tableView->setColumnWidth(7,100);
+    ui->main_tableView->setColumnWidth(8,20);
+    ui->main_tableView->setColumnWidth(9,60);
+
     ui->season_comboBox->setDisabled(true);
     ui->types_comboBox->setDisabled(true);
     ui->season_comboBox->setDisabled(true);
@@ -170,7 +171,12 @@ void MainWindow::on_logout_pushButton_clicked()
     ui->login_stackedWidget->setCurrentIndex(0);
     ui->login_lineEdit->clear();
     ui->password_lineEdit->clear();
-    // logout features
+    ui->favorite_pushButton->setDisabled(true);
+    QSqlQuery query;
+    query.exec(QString("UPDATE users SET favorites = '%1' WHERE name = '%2'")
+               .arg(favorites.asString())
+               .arg(userName));
+    // logout featuresS
 }
 
 void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
@@ -179,11 +185,16 @@ void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
 
     QItemSelectionModel * ism = ui->main_tableView->selectionModel();
     QModelIndexList indexList = ism->selectedIndexes();
-
-    DetailedDialog detailedDialog(indexList.at(1).data().toString(),
+    int id = indexList.at(0).data().toInt();
+    DetailedDialog detailedDialog(id,
+                                  indexList.at(1).data().toString(),
                                   indexList.at(2).data().toString(),
                                   indexList.at(3).data().toString(),
                                   this);
+    if (favorites.inFavorites(id))
+        detailedDialog.setFavorite();
+    connect(&detailedDialog, SIGNAL(addingFavorite(int)), &favorites, SLOT(add(int)));
+    connect(&detailedDialog, SIGNAL(remFavorite(int)), &favorites, SLOT(remove(int)));
     detailedDialog.exec();
 }
 
@@ -217,28 +228,7 @@ void MainWindow::on_vegetarian_pushButton_toggled(bool checked)
 
 void MainWindow::on_favorite_pushButton_clicked(bool checked)
 {
-    if (checked)
-    {
-        QSqlQuery query;
-        query.exec(QString("SELECT fav_id_1, fav_id_2, fav_id_3 FROM users WHERE name = '%1'")
-                   .arg(userName));
-
-        if (query.next())
-        {
-            QString id_filter_string = QString("( %1, %2, %3 )")
-                    .arg(query.value(0).toString())
-                    .arg(query.value(1).toString())
-                    .arg(query.value(2).toString());
-            filterClass.applyNew(ID_FILTER,id_filter_string);
-        }
-        else
-            qDebug() << "wrong bd querry result in on_favorite_pushButton_clicked(...) for " << userName;
-    }
-    else
-    {
-        filterClass.resetFilter(ID_FILTER);
-    }
-    model->setFilter(filterClass.currentFilter());
+    applyFilter(ID_FILTER, (checked) ? 1 : 0);
 }
 
 void MainWindow::on_spinBox_valueChanged(int arg1)
@@ -258,7 +248,7 @@ void MainWindow::on_register_pushButton_clicked()
 
 void MainWindow::on_about_triggered()
 {
-    QMessageBox::about(this, tr("About QtCookBook"), tr("This program created by M.Suldin and Mariya Tsviga"));
+    QMessageBox::about(this, tr("About QtCookBook"), tr("This program created by Mariya Tsviga"));
 }
 
 void MainWindow::on_main_tableView_customContextMenuRequested(const QPoint &pos)
