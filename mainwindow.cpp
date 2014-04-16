@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "detaileddialog.h"
+#include "registrationform.h"
 #include <QMessageBox>
 #include <QtSql/QSqlRelation>
 #include <QtSql/QSqlQuery>
@@ -255,7 +256,24 @@ void MainWindow::on_random_pushButton_clicked()
 
 void MainWindow::on_register_pushButton_clicked()
 {
-
+    RegistrationForm regForm(this);
+    if (QDialog::Accepted == regForm.exec())
+    {
+        QString newUserName = regForm.getUsername();
+        QString pass = regForm.getPassword();
+        QSqlQuery query(QString("INSERT INTO users (name, pass) VALUES ('%1', '%2')")
+                        .arg(newUserName)
+                        .arg(pass));
+        if ((query.lastError().type() != QSqlError::NoError))
+        {
+            QMessageBox::warning(this, tr("Adding new user error"),
+                                 tr("There is an error during adding new user. Try another username or connect to your administrator"));
+            return;
+        }
+        ui->login_lineEdit->setText(newUserName);
+        ui->password_lineEdit->setText(pass);
+        on_login_pushButton_clicked();
+    }
 }
 
 void MainWindow::on_about_triggered()

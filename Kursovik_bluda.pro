@@ -17,16 +17,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     detaileddialog.cpp \
     filter.cpp \
-    userfavorites.cpp
+    userfavorites.cpp \
+    registrationform.cpp
 
 HEADERS  += mainwindow.h \
     defines.h \
     detaileddialog.h \
     filter.h \
-    userfavorites.h
+    userfavorites.h \
+    registrationform.h
 
 FORMS    += mainwindow.ui \
-    detaileddialog.ui
+    detaileddialog.ui \
+    registrationform.ui
 
 RESOURCES += \
     resources.qrc
