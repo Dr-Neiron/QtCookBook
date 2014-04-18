@@ -23,9 +23,6 @@ QString UserFavorites::asSqlSet()
 {
     QString result;
 
-//    if (favorites.isEmpty())
-//        return result;
-
     result.append("(");
     result.append(favorites.join(","));
     result.append(")");

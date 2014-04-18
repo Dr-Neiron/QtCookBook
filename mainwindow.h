@@ -46,6 +46,8 @@ private slots:
 
     void on_pucancel_shButton_clicked();
 
+    void on_help_triggered();
+
 private:
     Ui::MainWindow              *ui;
     QSqlDatabase                db;
@@ -56,7 +58,6 @@ private:
     QString                     userName;
 
     void adminLogin();
-    void userLogin();
     void applyFilter(filters_t filter, int id);
     void prepareModel();
 };

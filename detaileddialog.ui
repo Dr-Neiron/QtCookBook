@@ -121,6 +121,9 @@
            <property name="text">
             <string>Consist</string>
            </property>
+           <property name="buddy">
+            <cstring>consist_plainTextEdit</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -218,6 +221,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>name_lineEdit</tabstop>
+  <tabstop>consist_plainTextEdit</tabstop>
+  <tabstop>description_plainTextEdit</tabstop>
+  <tabstop>addToFav_pushButton</tabstop>
+  <tabstop>print_pushButton</tabstop>
+  <tabstop>close_pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

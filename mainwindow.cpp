@@ -25,11 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     prepareModel();
 
-    isAdminLoggedIn = false;
-    ui->add_pushButton->setVisible(false);
-    ui->del_pushButton->setVisible(false);
-    ui->save_pushButton->setVisible(false);
-    ui->pucancel_shButton->setVisible(false);
+    on_logout_pushButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -59,13 +55,14 @@ void MainWindow::on_login_pushButton_clicked()
             adminLogin();
             break;
         case USER_ROLE:
-            userLogin();
             break;
         default:
             qDebug() << "wrong role for user " << userName;
         }
         favorites.init(query.value(1).toString());
         ui->favorite_pushButton->setEnabled(true);
+        ui->login_stackedWidget->setCurrentIndex(1);
+        ui->userName_label->setText(tr("Welcome, ") + userName + "!");
     }
     else
         QMessageBox::information(this, tr("Login incorrect"), tr("Login name or password is incorrect"));
@@ -73,7 +70,6 @@ void MainWindow::on_login_pushButton_clicked()
 
 void MainWindow::adminLogin()
 {
-    userLogin();
     isAdminLoggedIn = true;
     ui->add_pushButton->setVisible(true);
     ui->del_pushButton->setVisible(true);
@@ -81,12 +77,6 @@ void MainWindow::adminLogin()
     ui->pucancel_shButton->setVisible(true);
     ui->main_tableView->setEditTriggers(QAbstractItemView::EditKeyPressed | QAbstractItemView::SelectedClicked
                                         | QAbstractItemView::AnyKeyPressed);
-}
-
-void MainWindow::userLogin()
-{
-    ui->login_stackedWidget->setCurrentIndex(1);
-    ui->userName_label->setText(tr("Welcome, ") + userName + "!");
 }
 
 void MainWindow::applyFilter(filters_t filter, int id)
@@ -151,16 +141,17 @@ void MainWindow::prepareModel()
     ui->main_tableView->setItemDelegate(new QSqlRelationalDelegate(ui->main_tableView));
     ui->main_tableView->hideColumn(0);
     ui->main_tableView->hideColumn(8);
+    ui->main_tableView->hideColumn(9);
 
     ui->main_tableView->setColumnWidth(0,20);
-    ui->main_tableView->setColumnWidth(1,150);
-    ui->main_tableView->setColumnWidth(2,150);
-    ui->main_tableView->setColumnWidth(3,200);
-    ui->main_tableView->setColumnWidth(4,100);
-    ui->main_tableView->setColumnWidth(5,100);
-    ui->main_tableView->setColumnWidth(6,100);
+    ui->main_tableView->setColumnWidth(1,200);
+    ui->main_tableView->setColumnWidth(2,220);
+    ui->main_tableView->setColumnWidth(3,220);
+    ui->main_tableView->setColumnWidth(4,120);
+    ui->main_tableView->setColumnWidth(5,80);
+    ui->main_tableView->setColumnWidth(6,80);
     ui->main_tableView->setColumnWidth(7,100);
-    ui->main_tableView->setColumnWidth(8,20);
+    ui->main_tableView->setColumnWidth(8,30);
     ui->main_tableView->setColumnWidth(9,60);
 
     ui->season_comboBox->setDisabled(true);
@@ -179,22 +170,23 @@ void MainWindow::prepareModel()
 
 void MainWindow::on_logout_pushButton_clicked()
 {
-    if (!db.isOpen())
-        return;
     ui->login_stackedWidget->setCurrentIndex(0);
     ui->login_lineEdit->clear();
     ui->password_lineEdit->clear();
     ui->favorite_pushButton->setDisabled(true);
-    QSqlQuery query;
-    query.exec(QString("UPDATE users SET favorites = '%1' WHERE name = '%2'")
-               .arg(favorites.asString())
-               .arg(userName));
     isAdminLoggedIn = false;
     ui->add_pushButton->setVisible(false);
     ui->del_pushButton->setVisible(false);
     ui->save_pushButton->setVisible(false);
     ui->pucancel_shButton->setVisible(false);
     ui->main_tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    if (userName.isEmpty())
+        return;
+    QSqlQuery query;
+    query.exec(QString("UPDATE users SET favorites = '%1' WHERE name = '%2'")
+               .arg(favorites.asString())
+               .arg(userName));
+    userName.clear();
 }
 
 void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
@@ -349,4 +341,9 @@ void MainWindow::on_pucancel_shButton_clicked()
 {
     model->revertAll();
     model->select();
+}
+
+void MainWindow::on_help_triggered()
+{
+
 }

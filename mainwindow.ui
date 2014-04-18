@@ -46,6 +46,9 @@
             <underline>false</underline>
            </font>
           </property>
+          <property name="toolTip">
+           <string>Отображать только избранные блюда</string>
+          </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
@@ -71,6 +74,9 @@
             <height>30</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>Отображать только вегетарианские блюда</string>
+          </property>
           <property name="text">
            <string>Вегетерианское меню</string>
           </property>
@@ -92,6 +98,9 @@
             <width>200</width>
             <height>30</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>Случайно выбрать 3 блюда: завтрак, обед и ужин</string>
           </property>
           <property name="text">
            <string>Случайное меню</string>
@@ -307,6 +316,9 @@
               <underline>false</underline>
              </font>
             </property>
+            <property name="toolTip">
+             <string>Введите свои данные в форму выше и нажмите &quot;Вход&quot;</string>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
@@ -338,6 +350,9 @@
               <bold>true</bold>
               <underline>false</underline>
              </font>
+            </property>
+            <property name="toolTip">
+             <string>Зарегистрировать нового пользователя</string>
             </property>
             <property name="text">
              <string>Регистрация</string>
@@ -382,6 +397,9 @@
               <width>200</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="toolTip">
+             <string>Завершить текущий сеанс пользователя</string>
             </property>
             <property name="text">
              <string>Выйти</string>
@@ -782,12 +800,18 @@
          <property name="text">
           <string>Категория</string>
          </property>
+         <property name="buddy">
+          <cstring>types_comboBox</cstring>
+         </property>
         </widget>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Сезон</string>
+         </property>
+         <property name="buddy">
+          <cstring>season_comboBox</cstring>
          </property>
         </widget>
        </item>
@@ -796,12 +820,18 @@
          <property name="text">
           <string>Кухня</string>
          </property>
+         <property name="buddy">
+          <cstring>contry_comboBox</cstring>
+         </property>
         </widget>
        </item>
        <item row="0" column="3">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Время не более</string>
+         </property>
+         <property name="buddy">
+          <cstring>spinBox</cstring>
          </property>
         </widget>
        </item>
@@ -819,6 +849,9 @@
            <height>30</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Отображать только заданную категорию блюд</string>
+         </property>
         </widget>
        </item>
        <item row="1" column="1">
@@ -834,6 +867,9 @@
            <width>200</width>
            <height>30</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>Отображать только блюда заданного сезона</string>
          </property>
         </widget>
        </item>
@@ -851,6 +887,9 @@
            <height>30</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Отображать только блюда кухни указанной страны</string>
+         </property>
         </widget>
        </item>
        <item row="1" column="3">
@@ -866,6 +905,9 @@
            <width>200</width>
            <height>30</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Отображать блюда с временем приготовления не более указанного.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Установите &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt; чтобы отображать все блюда.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="suffix">
           <string> мин</string>
@@ -889,6 +931,9 @@
            <height>30</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Сбросить все фильтры и отобразить все блюда</string>
+         </property>
          <property name="text">
           <string>Сброс</string>
          </property>
@@ -905,6 +950,9 @@
         <height>391</height>
        </size>
       </property>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
      </widget>
     </item>
     <item>
@@ -926,6 +974,9 @@
           <height>30</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Добавить новый рецепт</string>
+        </property>
         <property name="text">
          <string>Добавить рецепт</string>
         </property>
@@ -945,6 +996,9 @@
           <height>30</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Удалить выбранный рецепт</string>
+        </property>
         <property name="text">
          <string>Удалить рецепт</string>
         </property>
@@ -958,6 +1012,9 @@
           <height>30</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Сохранить внсенные в базу изменения</string>
+        </property>
         <property name="text">
          <string>Сохранить</string>
         </property>
@@ -970,6 +1027,9 @@
           <width>150</width>
           <height>30</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>Сбросить внесенные изменения</string>
         </property>
         <property name="text">
          <string>Отменить</string>
@@ -1009,8 +1069,11 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="toolTip">
+         <string>Выйти из программы</string>
+        </property>
         <property name="text">
-         <string>Выход</string>
+         <string>Закрыть</string>
         </property>
        </widget>
       </item>
@@ -1085,6 +1148,27 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>login_lineEdit</tabstop>
+  <tabstop>password_lineEdit</tabstop>
+  <tabstop>login_pushButton</tabstop>
+  <tabstop>register_pushButton</tabstop>
+  <tabstop>favorite_pushButton</tabstop>
+  <tabstop>vegetarian_pushButton</tabstop>
+  <tabstop>random_pushButton</tabstop>
+  <tabstop>types_comboBox</tabstop>
+  <tabstop>season_comboBox</tabstop>
+  <tabstop>contry_comboBox</tabstop>
+  <tabstop>spinBox</tabstop>
+  <tabstop>reset_pushButton</tabstop>
+  <tabstop>main_tableView</tabstop>
+  <tabstop>exit_pushButton</tabstop>
+  <tabstop>add_pushButton</tabstop>
+  <tabstop>del_pushButton</tabstop>
+  <tabstop>save_pushButton</tabstop>
+  <tabstop>pucancel_shButton</tabstop>
+  <tabstop>logout_pushButton</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

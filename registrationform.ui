@@ -113,6 +113,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>userName_lineEdit</tabstop>
+  <tabstop>pass_lineEdit</tabstop>
+  <tabstop>passRepeat_lineEdit</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
