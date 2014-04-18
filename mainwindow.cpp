@@ -15,8 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     db = QSqlDatabase::addDatabase("QSQLITE");
-//    db.setDatabaseName("/home/msuldun/Qt/Kursovik_bluda/app.db");
-    db.setDatabaseName("/home/msuldun/Qt/app2.db");
+    db.setDatabaseName("/home/msuldun/Qt/QtCookBook/app.db");
     if (!db.open())
     {
         QMessageBox::critical(this, tr("Database error"), tr("Can't open database"));
@@ -180,6 +179,8 @@ void MainWindow::prepareModel()
 
 void MainWindow::on_logout_pushButton_clicked()
 {
+    if (!db.isOpen())
+        return;
     ui->login_stackedWidget->setCurrentIndex(0);
     ui->login_lineEdit->clear();
     ui->password_lineEdit->clear();
@@ -318,7 +319,7 @@ void MainWindow::on_about_triggered()
 
 void MainWindow::on_main_tableView_customContextMenuRequested(const QPoint &pos)
 {
-
+    Q_UNUSED(pos)
 }
 
 void MainWindow::on_add_pushButton_clicked()
