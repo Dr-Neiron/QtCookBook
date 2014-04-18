@@ -7,6 +7,7 @@
 #include <QtSql/QSqlQuery>
 #include <QModelIndexList>
 #include <QModelIndex>
+#include <QDesktopServices>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -345,5 +346,5 @@ void MainWindow::on_pucancel_shButton_clicked()
 
 void MainWindow::on_help_triggered()
 {
-
+    QDesktopServices::openUrl(QUrl("help.pdf"));
 }
