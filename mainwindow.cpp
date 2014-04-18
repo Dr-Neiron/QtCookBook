@@ -235,6 +235,7 @@ void MainWindow::on_reset_pushButton_clicked()
     ui->types_comboBox->setCurrentIndex(0);
     ui->season_comboBox->setCurrentIndex(0);
     ui->contry_comboBox->setCurrentIndex(0);
+    ui->spinBox->setValue(0);
     ui->vegetarian_pushButton->setChecked(false);
     model->setFilter("");
 }
