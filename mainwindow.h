@@ -38,6 +38,14 @@ private slots:
     void on_about_triggered();
     void on_main_tableView_customContextMenuRequested(const QPoint &pos);
 
+    void on_add_pushButton_clicked();
+
+    void on_del_pushButton_clicked();
+
+    void on_save_pushButton_clicked();
+
+    void on_pucancel_shButton_clicked();
+
 private:
     Ui::MainWindow              *ui;
     QSqlDatabase                db;

@@ -12,10 +12,14 @@ class DetailedDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit DetailedDialog(int id, QString name, QString consist, QString description, QWidget *parent = 0);
+    explicit DetailedDialog(int id, QString name, QString consist,
+                            QString description, QPixmap pic,
+                            QWidget *parent = 0);
     ~DetailedDialog();
 
     void setFavorite();
+    void allowEdit();
+    void getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic);
     
 signals:
     void addingFavorite(int id);

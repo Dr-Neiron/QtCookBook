@@ -31,6 +31,8 @@ FORMS    += mainwindow.ui \
     detaileddialog.ui \
     registrationform.ui
 
+TRANSLATIONS += qtcookbook_ru.ts
+
 RESOURCES += \
     resources.qrc
 

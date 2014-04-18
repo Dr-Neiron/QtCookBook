@@ -15,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/msuldun/Qt/Kursovik_bluda/app.db");
+//    db.setDatabaseName("/home/msuldun/Qt/Kursovik_bluda/app.db");
+    db.setDatabaseName("/home/msuldun/Qt/app2.db");
     if (!db.open())
     {
         QMessageBox::critical(this, tr("Database error"), tr("Can't open database"));
@@ -26,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
     prepareModel();
 
     isAdminLoggedIn = false;
+    ui->add_pushButton->setVisible(false);
+    ui->del_pushButton->setVisible(false);
+    ui->save_pushButton->setVisible(false);
+    ui->pucancel_shButton->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -70,13 +75,19 @@ void MainWindow::on_login_pushButton_clicked()
 void MainWindow::adminLogin()
 {
     userLogin();
-    //features for admin
+    isAdminLoggedIn = true;
+    ui->add_pushButton->setVisible(true);
+    ui->del_pushButton->setVisible(true);
+    ui->save_pushButton->setVisible(true);
+    ui->pucancel_shButton->setVisible(true);
+    ui->main_tableView->setEditTriggers(QAbstractItemView::EditKeyPressed | QAbstractItemView::SelectedClicked
+                                        | QAbstractItemView::AnyKeyPressed);
 }
 
 void MainWindow::userLogin()
 {
     ui->login_stackedWidget->setCurrentIndex(1);
-    ui->userName_label->setText(userName);
+    ui->userName_label->setText(tr("Welcome, ") + userName + "!");
 }
 
 void MainWindow::applyFilter(filters_t filter, int id)
@@ -177,7 +188,12 @@ void MainWindow::on_logout_pushButton_clicked()
     query.exec(QString("UPDATE users SET favorites = '%1' WHERE name = '%2'")
                .arg(favorites.asString())
                .arg(userName));
-    // logout featuresS
+    isAdminLoggedIn = false;
+    ui->add_pushButton->setVisible(false);
+    ui->del_pushButton->setVisible(false);
+    ui->save_pushButton->setVisible(false);
+    ui->pucancel_shButton->setVisible(false);
+    ui->main_tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
@@ -187,16 +203,35 @@ void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
     QItemSelectionModel * ism = ui->main_tableView->selectionModel();
     QModelIndexList indexList = ism->selectedIndexes();
     int id = indexList.at(0).data().toInt();
+    QByteArray pic = indexList.at(8).data().toByteArray();
+    QPixmap pixmap;
+    if (!pic.isEmpty())
+        pixmap.loadFromData(pic);
     DetailedDialog detailedDialog(id,
                                   indexList.at(1).data().toString(),
                                   indexList.at(2).data().toString(),
                                   indexList.at(3).data().toString(),
+                                  pixmap,
                                   this);
     if (favorites.inFavorites(id))
         detailedDialog.setFavorite();
+    if (isAdminLoggedIn)
+        detailedDialog.allowEdit();
     connect(&detailedDialog, SIGNAL(addingFavorite(int)), &favorites, SLOT(add(int)));
     connect(&detailedDialog, SIGNAL(remFavorite(int)), &favorites, SLOT(remove(int)));
     detailedDialog.exec();
+    if (isAdminLoggedIn)
+    {
+        QString name;
+        QString consist;
+        QString description;
+        QPixmap pic;
+        detailedDialog.getData(id, name, consist, description, pic);
+        // TODO: implement photo
+        QSqlQuery query(QString("UPDATE bluda SET name = '%1', sostav = '%2', opisanie = '%3' WHERE bluda.id = %4")
+                        .arg(name).arg(consist).arg(description).arg(id));
+        model->select();
+    }
     if (ui->favorite_pushButton->isChecked())
         applyFilter(ID_FILTER, 1);
 }
@@ -284,4 +319,33 @@ void MainWindow::on_about_triggered()
 void MainWindow::on_main_tableView_customContextMenuRequested(const QPoint &pos)
 {
 
+}
+
+void MainWindow::on_add_pushButton_clicked()
+{
+    model->insertRow(model->rowCount());
+}
+
+void MainWindow::on_del_pushButton_clicked()
+{
+    QModelIndexList index = ui->main_tableView->selectionModel()->selectedIndexes();
+
+    if (!index.isEmpty())
+    {
+        int row = index.at(0).row();
+        model->removeRow(row);
+        ui->main_tableView->setRowHidden(row, true);
+        model->submitAll();
+    }
+}
+
+void MainWindow::on_save_pushButton_clicked()
+{
+    model->submitAll();
+}
+
+void MainWindow::on_pucancel_shButton_clicked()
+{
+    model->revertAll();
+    model->select();
 }

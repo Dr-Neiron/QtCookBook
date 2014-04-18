@@ -4,14 +4,18 @@
 #include <QPrintDialog>
 #include <QDebug>
 
-DetailedDialog::DetailedDialog(int id, QString name, QString consist, QString description, QWidget *parent) :
+DetailedDialog::DetailedDialog(int id, QString name, QString consist, QString description, QPixmap pic, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DetailedDialog)
 {
     ui->setupUi(this);
     ui->name_label->setText(name);
-    ui->consist_textBrowser->append(consist);
-    ui->description_textBrowser->append(description);
+    ui->name_lineEdit->setText(name);
+    ui->name_lineEdit->setVisible(false);
+    ui->consist_plainTextEdit->appendPlainText(consist);
+    ui->description_plainTextEdit->appendPlainText(description);
+    if (!pic.isNull())
+        ui->image_label->setPixmap(pic);
     this->id = id;
 }
 
@@ -26,12 +30,31 @@ void DetailedDialog::setFavorite()
     ui->addToFav_pushButton->setText(tr("Remove from favorites"));
 }
 
+void DetailedDialog::allowEdit()
+{
+    ui->consist_plainTextEdit->setReadOnly(false);
+    ui->description_plainTextEdit->setReadOnly(false);
+    ui->name_label->setVisible(false);
+    ui->name_lineEdit->setVisible(true);
+}
+
+void DetailedDialog::getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic)
+{
+    id = this->id;
+    name = ui->name_lineEdit->text();
+    consist = ui->consist_plainTextEdit->toPlainText();
+    description = ui->description_plainTextEdit->toPlainText();
+    pic = QPixmap(); // TODO: implement pixmap
+}
+
 void DetailedDialog::on_print_pushButton_clicked()
 {
     QString textData;
     textData.append(ui->name_label->text());
-    textData.append(ui->consist_textBrowser->toHtml());
-    textData.append(ui->description_textBrowser->toHtml());
+    textData.append(tr("Consistence:"));
+    textData.append(ui->consist_plainTextEdit->toPlainText());
+    textData.append(tr("Description"));
+    textData.append(ui->description_plainTextEdit->toPlainText());
 
     QPrinter printer(QPrinter::HighResolution);
     QPrintDialog pd(&printer, this);

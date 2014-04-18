@@ -2,4 +2,7 @@
     <qresource prefix="/img">
         <file alias="logo">logo.png</file>
     </qresource>
+    <qresource prefix="/translations">
+        <file>qtcookbook_ru.qm</file>
+    </qresource>
 </RCC>

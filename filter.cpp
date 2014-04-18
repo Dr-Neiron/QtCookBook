@@ -16,11 +16,11 @@ QString Filter::currentFilter()
     if (!filterMap[ID_FILTER].isEmpty())
         result += " AND bluda.id IN " + filterMap[ID_FILTER];
     if (!filterMap[SEASON_FILTER].isEmpty())
-        result += " AND bluda.season = " + filterMap[SEASON_FILTER];
+        result += " AND (bluda.season = " + filterMap[SEASON_FILTER] + " OR bluda.season = 0)";
     if (!filterMap[TYPES_FILTER].isEmpty())
-        result += " AND bluda.type = " + filterMap[TYPES_FILTER];
+        result += " AND (bluda.type = " + filterMap[TYPES_FILTER]+ " OR bluda.type = 0)";
     if (!filterMap[CONTRY_FILTER].isEmpty())
-        result += " AND bluda.contry = " + filterMap[CONTRY_FILTER];
+        result += " AND (bluda.contry = " + filterMap[CONTRY_FILTER]+ " OR bluda.contry = 0)";
     if (!filterMap[DURATION_FILTER].isEmpty())
         result += " AND bluda.duration <= " + filterMap[DURATION_FILTER];
     if (!filterMap[VEGETARIAN_FILTER].isEmpty())
