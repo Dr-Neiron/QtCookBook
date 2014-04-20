@@ -37,16 +37,13 @@ private slots:
     void on_register_pushButton_clicked();
     void on_about_triggered();
     void on_main_tableView_customContextMenuRequested(const QPoint &pos);
-
     void on_add_pushButton_clicked();
-
     void on_del_pushButton_clicked();
-
     void on_save_pushButton_clicked();
-
     void on_pucancel_shButton_clicked();
-
     void on_help_triggered();
+    void on_password_lineEdit_returnPressed();
+    void on_login_lineEdit_returnPressed();
 
 private:
     Ui::MainWindow              *ui;

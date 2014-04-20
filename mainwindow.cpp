@@ -358,3 +358,13 @@ void MainWindow::on_help_triggered()
 {
     QDesktopServices::openUrl(QUrl("help.pdf"));
 }
+
+void MainWindow::on_password_lineEdit_returnPressed()
+{
+    on_login_pushButton_clicked();
+}
+
+void MainWindow::on_login_lineEdit_returnPressed()
+{
+    on_login_pushButton_clicked();
+}
