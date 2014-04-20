@@ -283,11 +283,11 @@ void MainWindow::on_random_pushButton_clicked()
 {
     on_reset_pushButton_clicked();
     QStringList randId;
-    QSqlQuery query(QString("SELECT * FROM (SELECT id FROM bluda WHERE bluda.type = 1 ORDER BY RANDOM() LIMIT 1)") +
+    QSqlQuery query(QString("SELECT * FROM (SELECT id FROM bluda WHERE (bluda.type = 1 OR bluda.type = 0) ORDER BY RANDOM() LIMIT 1)") +
                     QString(" UNION ALL ") +
-                    QString("SELECT * FROM (SELECT id FROM bluda WHERE bluda.type = 2 ORDER BY RANDOM() LIMIT 1)") +
+                    QString("SELECT * FROM (SELECT id FROM bluda WHERE (bluda.type = 2 OR bluda.type = 0) ORDER BY RANDOM() LIMIT 1)") +
                     QString(" UNION ALL ") +
-                    QString("SELECT * FROM (SELECT id FROM bluda WHERE bluda.type = 3 ORDER BY RANDOM() LIMIT 1)"));
+                    QString("SELECT * FROM (SELECT id FROM bluda WHERE (bluda.type = 3 OR bluda.type = 0) ORDER BY RANDOM() LIMIT 1)"));
     while (query.next())
         randId.append(query.value(0).toString());
     model->setFilter(QString("bluda.id IN ( ") + randId.join(", ") + QString(" )"));
