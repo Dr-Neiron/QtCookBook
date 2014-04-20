@@ -40,7 +40,7 @@ bool UserFavorites::inFavorites(int id)
 void UserFavorites::add(int id)
 {
     QString fav = QString::number(id);
-    if (!favorites.contains(fav))
+    if ((!favorites.contains(fav)) && (fav != 0))
         favorites.append(fav);
 }
 

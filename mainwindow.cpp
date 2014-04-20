@@ -219,12 +219,21 @@ void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
         QString name;
         QString consist;
         QString description;
-        QPixmap pic;
-        detailedDialog.getData(id, name, consist, description, pic);
-        // TODO: implement photo
-        QSqlQuery query(QString("UPDATE bluda SET name = '%1', sostav = '%2', opisanie = '%3' WHERE bluda.id = %4")
-                        .arg(name).arg(consist).arg(description).arg(id));
-        model->select();
+        QString imageFormat;
+        detailedDialog.getData(id, name, consist, description, pixmap, imageFormat);
+        QByteArray byteArray;
+        if (detailedDialog.imageWasUpdated())
+        {
+            QBuffer buffer(&byteArray);
+            buffer.open(QIODevice::WriteOnly);
+            pixmap.save(&buffer, imageFormat.toUpper().toLocal8Bit());
+            model->setData(indexList.at(8),byteArray);
+        }
+
+        model->setData(indexList.at(1),name);
+        model->setData(indexList.at(2),consist);
+        model->setData(indexList.at(3),description);
+        on_save_pushButton_clicked();
     }
     if (ui->favorite_pushButton->isChecked())
         applyFilter(ID_FILTER, 1);

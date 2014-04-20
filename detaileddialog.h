@@ -19,7 +19,9 @@ public:
 
     void setFavorite();
     void allowEdit();
-    void getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic);
+    void getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic,
+                 QString &imageFormat);
+    bool imageWasUpdated();
     
 signals:
     void addingFavorite(int id);
@@ -28,10 +30,13 @@ signals:
 private slots:
     void on_print_pushButton_clicked();
     void on_addToFav_pushButton_clicked(bool checked);
+    void on_uploadImage_pushButton_clicked();
 
 private:
     Ui::DetailedDialog *ui;
-    int id;
+    QString     imageFormat;
+    int         id;
+    bool        imageUpdated;
 };
 
 #endif // DETAILEDDIALOG_H

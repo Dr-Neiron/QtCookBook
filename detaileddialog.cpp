@@ -2,6 +2,7 @@
 #include "ui_detaileddialog.h"
 #include <QPrinter>
 #include <QPrintDialog>
+#include <QFileDialog>
 #include <QDebug>
 
 DetailedDialog::DetailedDialog(int id, QString name, QString consist, QString description, QPixmap pic, QWidget *parent) :
@@ -15,8 +16,10 @@ DetailedDialog::DetailedDialog(int id, QString name, QString consist, QString de
     ui->consist_plainTextEdit->appendPlainText(consist);
     ui->description_plainTextEdit->appendPlainText(description);
     if (!pic.isNull())
-        ui->image_label->setPixmap(pic);
+        ui->image_label->setPixmap(pic.scaled(ui->image_label->size()));
     this->id = id;
+    ui->uploadImage_pushButton->setVisible(false);
+    imageUpdated = false;
 }
 
 DetailedDialog::~DetailedDialog()
@@ -36,15 +39,24 @@ void DetailedDialog::allowEdit()
     ui->description_plainTextEdit->setReadOnly(false);
     ui->name_label->setVisible(false);
     ui->name_lineEdit->setVisible(true);
+    ui->uploadImage_pushButton->setVisible(true);
 }
 
-void DetailedDialog::getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic)
+void DetailedDialog::getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic,
+                             QString &imageFormat)
 {
     id = this->id;
     name = ui->name_lineEdit->text();
     consist = ui->consist_plainTextEdit->toPlainText();
     description = ui->description_plainTextEdit->toPlainText();
-    pic = QPixmap(); // TODO: implement pixmap
+    if (ui->image_label->pixmap() != NULL)
+        pic = *(ui->image_label->pixmap());
+    imageFormat = this->imageFormat;
+}
+
+bool DetailedDialog::imageWasUpdated()
+{
+    return imageUpdated;
 }
 
 void DetailedDialog::on_print_pushButton_clicked()
@@ -77,5 +89,21 @@ void DetailedDialog::on_addToFav_pushButton_clicked(bool checked)
     {
         emit remFavorite(id);
         ui->addToFav_pushButton->setText(tr("To favorites"));
+    }
+}
+
+void DetailedDialog::on_uploadImage_pushButton_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open image file"),
+                                                        qApp->applicationDirPath(),
+                                                        tr("Images (*.bmp *.jpg *.jpeg *.gif *.png *.xpm)"));
+    imageFormat = fileName.split(".").last();
+    if (fileName.isEmpty())
+        return;
+    QPixmap pic(fileName);
+    if (!pic.isNull())
+    {
+        ui->image_label->setPixmap(pic.scaled(ui->image_label->size()));
+        imageUpdated = true;
     }
 }
