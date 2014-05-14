@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/msuldun/Qt/QtCookBook/app.db");
+    db.setDatabaseName("/home/msuldin/Qt/build-QtCookBook-Desktop-Debug/app.db");
     if (!db.open())
     {
         QMessageBox::critical(this, tr("Database error"), tr("Can't open database"));
