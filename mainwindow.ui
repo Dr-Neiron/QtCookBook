@@ -47,13 +47,13 @@
            </font>
           </property>
           <property name="toolTip">
-           <string>Отображать только избранные блюда</string>
+           <string>Show only favorites dishes</string>
           </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
           <property name="text">
-           <string>Избранное</string>
+           <string>Favorites</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -75,10 +75,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Отображать только вегетарианские блюда</string>
+           <string>Show only vegetarian dishes</string>
           </property>
           <property name="text">
-           <string>Вегетерианское меню</string>
+           <string>Vegetarian menu</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -100,10 +100,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Случайно выбрать 3 блюда: завтрак, обед и ужин</string>
+           <string>Get 3 dishes by random</string>
           </property>
           <property name="text">
-           <string>Случайное меню</string>
+           <string>Random menu</string>
           </property>
          </widget>
         </item>
@@ -226,7 +226,7 @@
              <string/>
             </property>
             <property name="placeholderText">
-             <string>Введите логин</string>
+             <string>Enter username</string>
             </property>
            </widget>
           </item>
@@ -288,7 +288,7 @@
              <enum>QLineEdit::Password</enum>
             </property>
             <property name="placeholderText">
-             <string>Введите пароль</string>
+             <string>Enter password</string>
             </property>
            </widget>
           </item>
@@ -317,13 +317,13 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>Введите свои данные в форму выше и нажмите &quot;Вход&quot;</string>
+             <string>Login to your account</string>
             </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
             <property name="text">
-             <string>Вход</string>
+             <string>Login</string>
             </property>
            </widget>
           </item>
@@ -352,10 +352,10 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>Зарегистрировать нового пользователя</string>
+             <string>Register new user</string>
             </property>
             <property name="text">
-             <string>Регистрация</string>
+             <string>Register</string>
             </property>
             <property name="flat">
              <bool>false</bool>
@@ -399,10 +399,10 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>Завершить текущий сеанс пользователя</string>
+             <string/>
             </property>
             <property name="text">
-             <string>Выйти</string>
+             <string>Logout</string>
             </property>
            </widget>
           </item>
@@ -792,13 +792,13 @@
        <bool>true</bool>
       </property>
       <property name="title">
-       <string>Фильтр</string>
+       <string>Filter</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Категория</string>
+          <string>Category</string>
          </property>
          <property name="buddy">
           <cstring>types_comboBox</cstring>
@@ -808,7 +808,7 @@
        <item row="0" column="1">
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Сезон</string>
+          <string>Season</string>
          </property>
          <property name="buddy">
           <cstring>season_comboBox</cstring>
@@ -818,7 +818,7 @@
        <item row="0" column="2">
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Кухня</string>
+          <string>Contry</string>
          </property>
          <property name="buddy">
           <cstring>contry_comboBox</cstring>
@@ -828,7 +828,7 @@
        <item row="0" column="3">
         <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Время не более</string>
+          <string>Time less than</string>
          </property>
          <property name="buddy">
           <cstring>spinBox</cstring>
@@ -850,7 +850,7 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>Отображать только заданную категорию блюд</string>
+          <string>Show only specified category</string>
          </property>
         </widget>
        </item>
@@ -869,7 +869,7 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>Отображать только блюда заданного сезона</string>
+          <string>Show only specified season</string>
          </property>
         </widget>
        </item>
@@ -888,7 +888,7 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>Отображать только блюда кухни указанной страны</string>
+          <string>Show only specified contry</string>
          </property>
         </widget>
        </item>
@@ -907,10 +907,10 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Отображать блюда с временем приготовления не более указанного.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Установите &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt; чтобы отображать все блюда.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string/>
          </property>
          <property name="suffix">
-          <string> мин</string>
+          <string> min</string>
          </property>
          <property name="maximum">
           <number>500</number>
@@ -932,10 +932,10 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>Сбросить все фильтры и отобразить все блюда</string>
+          <string>Reset all filters and show all dishes</string>
          </property>
          <property name="text">
-          <string>Сброс</string>
+          <string>Reset</string>
          </property>
         </widget>
        </item>
@@ -975,10 +975,10 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Добавить новый рецепт</string>
+         <string/>
         </property>
         <property name="text">
-         <string>Добавить рецепт</string>
+         <string>Add recipe</string>
         </property>
        </widget>
       </item>
@@ -997,10 +997,10 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Удалить выбранный рецепт</string>
+         <string/>
         </property>
         <property name="text">
-         <string>Удалить рецепт</string>
+         <string>Remove recipe</string>
         </property>
        </widget>
       </item>
@@ -1013,10 +1013,10 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Сохранить внсенные в базу изменения</string>
+         <string>Save changes to database</string>
         </property>
         <property name="text">
-         <string>Сохранить</string>
+         <string>Save changes</string>
         </property>
        </widget>
       </item>
@@ -1029,10 +1029,10 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Сбросить внесенные изменения</string>
+         <string>Cancel all changes</string>
         </property>
         <property name="text">
-         <string>Отменить</string>
+         <string>Cancel changes</string>
         </property>
        </widget>
       </item>
@@ -1070,10 +1070,10 @@
          </font>
         </property>
         <property name="toolTip">
-         <string>Выйти из программы</string>
+         <string>Exit programm</string>
         </property>
         <property name="text">
-         <string>Закрыть</string>
+         <string>Close</string>
         </property>
        </widget>
       </item>
@@ -1092,7 +1092,7 @@
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>Файл</string>
+     <string>File</string>
     </property>
     <addaction name="random"/>
     <addaction name="vegetarian"/>
@@ -1101,7 +1101,7 @@
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
-     <string>Справка</string>
+     <string>Help</string>
     </property>
     <addaction name="help"/>
     <addaction name="about"/>
@@ -1120,7 +1120,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="random">
    <property name="text">
-    <string>Случайное меню</string>
+    <string>Random menu</string>
    </property>
   </action>
   <action name="vegetarian">
@@ -1128,22 +1128,22 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Вегетерианское меню</string>
+    <string>Vegetarian menu</string>
    </property>
   </action>
   <action name="exit">
    <property name="text">
-    <string>Выход</string>
+    <string>Exit</string>
    </property>
   </action>
   <action name="about">
    <property name="text">
-    <string>О программе</string>
+    <string>About...</string>
    </property>
   </action>
   <action name="help">
    <property name="text">
-    <string>Справка</string>
+    <string>Help...</string>
    </property>
   </action>
  </widget>

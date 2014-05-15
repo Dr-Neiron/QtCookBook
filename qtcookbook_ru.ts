@@ -3,65 +3,76 @@
 <TS version="2.0" language="ru_RU">
 <context>
     <name>DetailedDialog</name>
-    <message utf8="true">
+    <message>
         <location filename="detaileddialog.ui" line="14"/>
-        <source>Подробное описание</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="detaileddialog.ui" line="30"/>
-        <location filename="detaileddialog.ui" line="50"/>
-        <source>Название блюда</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="detaileddialog.ui" line="100"/>
-        <source>Нет изображения</source>
-        <translation></translation>
+        <source>Detailed description</source>
+        <translation>Подробное описание</translation>
     </message>
     <message>
-        <location filename="detaileddialog.ui" line="122"/>
+        <location filename="detaileddialog.ui" line="30"/>
+        <location filename="detaileddialog.ui" line="50"/>
+        <source>Dish name</source>
+        <translation>Название блюда</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.ui" line="102"/>
+        <source>No image</source>
+        <translation>Нет изображения</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.ui" line="112"/>
+        <source>Upload image...</source>
+        <translation>Загрузить изображение...</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.ui" line="204"/>
+        <source>Print</source>
+        <translation>Печать</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.ui" line="227"/>
+        <source>Close</source>
+        <translation>Закрыть</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.ui" line="133"/>
         <source>Consist</source>
         <translation>Состав</translation>
     </message>
-    <message utf8="true">
-        <location filename="detaileddialog.ui" line="170"/>
-        <source>В избранное</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="detaileddialog.ui" line="193"/>
-        <source>Печать</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="detaileddialog.ui" line="216"/>
-        <source>Закрыть</source>
-        <translation></translation>
-    </message>
     <message>
-        <location filename="detaileddialog.cpp" line="30"/>
-        <location filename="detaileddialog.cpp" line="74"/>
+        <location filename="detaileddialog.cpp" line="33"/>
+        <location filename="detaileddialog.cpp" line="86"/>
         <source>Remove from favorites</source>
         <translation>Удалить из избранного</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="54"/>
+        <location filename="detaileddialog.cpp" line="66"/>
         <source>Consistence:</source>
         <translation>Состав:</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="56"/>
+        <location filename="detaileddialog.cpp" line="68"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="61"/>
+        <location filename="detaileddialog.cpp" line="73"/>
         <source>Print reciept</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="79"/>
+        <location filename="detaileddialog.cpp" line="97"/>
+        <source>Open image file</source>
+        <translation>Открыть файл с изображением</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.cpp" line="99"/>
+        <source>Images (*.bmp *.jpg *.jpeg *.gif *.png *.xpm)</source>
+        <translation>Изображения (*.bmp *.jpg *.jpeg *.gif *.png *.xpm)</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.ui" line="181"/>
+        <location filename="detaileddialog.cpp" line="91"/>
         <source>To favorites</source>
         <translation>В избранное</translation>
     </message>
@@ -74,313 +85,287 @@
         <oldsource>MainWindow</oldsource>
         <translation></translation>
     </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="50"/>
-        <source>Отображать только избранные блюда</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="56"/>
-        <source>Избранное</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="78"/>
-        <source>Отображать только вегетарианские блюда</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="81"/>
-        <location filename="mainwindow.ui" line="1128"/>
-        <source>Вегетерианское меню</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="103"/>
-        <source>Случайно выбрать 3 блюда: завтрак, обед и ужин</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="106"/>
-        <location filename="mainwindow.ui" line="1120"/>
-        <source>Случайное меню</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="229"/>
-        <source>Введите логин</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="291"/>
-        <source>Введите пароль</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="320"/>
-        <source>Введите свои данные в форму выше и нажмите &quot;Вход&quot;</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="326"/>
-        <source>Вход</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="355"/>
-        <source>Зарегистрировать нового пользователя</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="358"/>
-        <source>Регистрация</source>
-        <translation></translation>
-    </message>
     <message>
         <location filename="mainwindow.ui" line="380"/>
         <source>user_name</source>
         <translation></translation>
     </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="402"/>
-        <source>Завершить текущий сеанс пользователя</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="405"/>
-        <source>Выйти</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="795"/>
-        <source>Фильтр</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="801"/>
-        <source>Категория</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="811"/>
-        <source>Сезон</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="821"/>
-        <source>Кухня</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="831"/>
-        <source>Время не более</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="853"/>
-        <source>Отображать только заданную категорию блюд</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="872"/>
-        <source>Отображать только блюда заданного сезона</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="891"/>
-        <source>Отображать только блюда кухни указанной страны</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="910"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Отображать блюда с временем приготовления не более указанного.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Установите &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt; чтобы отображать все блюда.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="913"/>
-        <source> мин</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="935"/>
-        <source>Сбросить все фильтры и отобразить все блюда</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="938"/>
-        <source>Сброс</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="978"/>
-        <source>Добавить рецепт</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="997"/>
-        <source>Удалить выбранный рецепт</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1000"/>
-        <source>Удалить рецепт</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1013"/>
-        <source>Сохранить внсенные в базу изменения</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1016"/>
-        <location filename="mainwindow.ui" line="1161"/>
-        <source>Сохранить</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1029"/>
-        <source>Сбросить внесенные изменения</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1032"/>
-        <location filename="mainwindow.ui" line="1166"/>
-        <source>Отменить</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1070"/>
-        <source>Выйти из программы</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1133"/>
-        <source>Выход</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1148"/>
-        <source>Добавить</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1156"/>
-        <source>Удалить</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1092"/>
-        <source>Файл</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1101"/>
-        <location filename="mainwindow.ui" line="1143"/>
-        <source>Справка</source>
-        <translation></translation>
-    </message>
-    <message utf8="true">
-        <location filename="mainwindow.ui" line="1138"/>
-        <source>О программе</source>
-        <translation></translation>
+    <message>
+        <location filename="mainwindow.ui" line="56"/>
+        <source>Favorites</source>
+        <translation>Избранное</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="21"/>
+        <location filename="mainwindow.ui" line="50"/>
+        <source>Show only favorites dishes</source>
+        <translation>Показывать только избранные блюда</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="78"/>
+        <source>Show only vegetarian dishes</source>
+        <translation>Показывать только вегетарианские блюда</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="81"/>
+        <location filename="mainwindow.ui" line="1131"/>
+        <source>Vegetarian menu</source>
+        <translation>Вегетарианское меню</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="103"/>
+        <source>Get 3 dishes by random</source>
+        <translation>Случайно выбрать 3 блюда</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="106"/>
+        <location filename="mainwindow.ui" line="1123"/>
+        <source>Random menu</source>
+        <translation>Случайное меню</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="229"/>
+        <source>Enter username</source>
+        <translation>Введите логин</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="291"/>
+        <source>Enter password</source>
+        <translation>Введите пароль</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="320"/>
+        <source>Login to your account</source>
+        <translation>Войти в свой аккаунт</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="326"/>
+        <source>Login</source>
+        <translation>Вход</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="355"/>
+        <source>Register new user</source>
+        <translation>Зарегистрировать нового пользователя</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="358"/>
+        <source>Register</source>
+        <translation>Регистрация</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="405"/>
+        <source>Logout</source>
+        <translation>Завершить сеанс</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="795"/>
+        <source>Filter</source>
+        <translation>Фильтр</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="801"/>
+        <source>Category</source>
+        <translation>Категория</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="831"/>
+        <source>Time less than</source>
+        <translation>Время не более</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="853"/>
+        <source>Show only specified category</source>
+        <translation>Показывать только выбранную категорию</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="872"/>
+        <source>Show only specified season</source>
+        <translation>Показывать только выбранный сезон</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="891"/>
+        <source>Show only specified contry</source>
+        <translation>Показывать только выбранную страну</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="913"/>
+        <source> min</source>
+        <translation> мин</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="935"/>
+        <source>Reset all filters and show all dishes</source>
+        <translation>Сбросить фильтр и показать все блюда</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="938"/>
+        <source>Reset</source>
+        <translation>Сброс</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1016"/>
+        <source>Save changes to database</source>
+        <translation>Сохранить изменения в базу данных</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1019"/>
+        <source>Save changes</source>
+        <translation>Сохранить</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1032"/>
+        <source>Cancel all changes</source>
+        <translation>Сбросить все изменения</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1035"/>
+        <source>Cancel changes</source>
+        <translation>Сбросить</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1073"/>
+        <source>Exit programm</source>
+        <translation>Выйти из программы</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1076"/>
+        <source>Close</source>
+        <translation>Закрыть</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1095"/>
+        <source>File</source>
+        <translation>Файл</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1104"/>
+        <source>Help</source>
+        <translation>Помощь</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1136"/>
+        <source>Exit</source>
+        <translation>Выход</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1141"/>
+        <source>About...</source>
+        <translation>О программе...</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1146"/>
+        <source>Help...</source>
+        <translation>Помощь...</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="981"/>
+        <source>Add recipe</source>
+        <translation>Добавить рецепт</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1003"/>
+        <source>Remove recipe</source>
+        <translation>Удалить рецепт</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="22"/>
         <source>Database error</source>
         <translation>Ошибка базы данных</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="21"/>
+        <location filename="mainwindow.cpp" line="22"/>
         <source>Can&apos;t open database</source>
         <translation>Невозможно открыть базу данных</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="24"/>
+        <location filename="mainwindow.cpp" line="25"/>
         <source>Database opened</source>
         <translation>База данных открыта</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="71"/>
+        <location filename="mainwindow.cpp" line="69"/>
         <source>Login incorrect</source>
         <translation>Ошибка входа</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="71"/>
+        <location filename="mainwindow.cpp" line="69"/>
         <source>Login name or password is incorrect</source>
         <translation>Ошибка в имени пользователя или в пароле</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="89"/>
+        <location filename="mainwindow.cpp" line="66"/>
         <source>Welcome, </source>
         <translation>Добро пожаловать, </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="131"/>
+        <location filename="mainwindow.cpp" line="122"/>
         <source>Product ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="132"/>
+        <location filename="mainwindow.cpp" line="123"/>
         <source>Product name</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="133"/>
+        <location filename="mainwindow.cpp" line="124"/>
         <source>Composition</source>
         <translation>Состав</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="134"/>
+        <location filename="mainwindow.cpp" line="125"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="135"/>
+        <location filename="mainwindow.cpp" line="126"/>
         <source>Duration</source>
         <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="136"/>
+        <location filename="mainwindow.ui" line="811"/>
+        <location filename="mainwindow.cpp" line="127"/>
         <source>Season</source>
         <translation>Сезон</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="137"/>
+        <location filename="mainwindow.cpp" line="128"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="138"/>
+        <location filename="mainwindow.ui" line="821"/>
+        <location filename="mainwindow.cpp" line="129"/>
         <source>Contry</source>
         <translation>Кухня</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="139"/>
+        <location filename="mainwindow.cpp" line="130"/>
         <source>Photo</source>
         <translation>Фото</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="140"/>
+        <location filename="mainwindow.cpp" line="131"/>
         <source>Vegetarian</source>
         <translation>Вегетарианское</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="305"/>
+        <location filename="mainwindow.cpp" line="308"/>
         <source>Adding new user error</source>
         <translation>Ошибка при добавлении нового пользователя</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="306"/>
+        <location filename="mainwindow.cpp" line="309"/>
         <source>There is an error during adding new user. Try another username or connect to your administrator</source>
         <translation>Ошибка при добавлении нового пользователя. Попробуйте другое имя или свяжитесь с вашим системным администратором</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="317"/>
+        <location filename="mainwindow.cpp" line="320"/>
         <source>About QtCookBook</source>
         <translation>О QtCookBook</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="317"/>
+        <location filename="mainwindow.cpp" line="320"/>
         <source>This program created by Mariya Tsviga</source>
         <translation>Эта программа разработана Марией Цвига</translation>
     </message>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Подробное описание</string>
+   <string>Detailed description</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -27,7 +27,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Название блюда</string>
+        <string>Dish name</string>
        </property>
       </widget>
      </item>
@@ -47,7 +47,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Название блюда</string>
+        <string>Dish name</string>
        </property>
        <property name="readOnly">
         <bool>false</bool>
@@ -99,7 +99,7 @@
           <enum>QFrame::Plain</enum>
          </property>
          <property name="text">
-          <string>Нет изображения</string>
+          <string>No image</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -178,7 +178,7 @@
      <item>
       <widget class="QPushButton" name="addToFav_pushButton">
        <property name="text">
-        <string>В избранное</string>
+        <string>To favorites</string>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -201,7 +201,7 @@
      <item>
       <widget class="QPushButton" name="print_pushButton">
        <property name="text">
-        <string>Печать</string>
+        <string>Print</string>
        </property>
       </widget>
      </item>
@@ -224,7 +224,7 @@
      <item>
       <widget class="QPushButton" name="close_pushButton">
        <property name="text">
-        <string>Закрыть</string>
+        <string>Close</string>
        </property>
       </widget>
      </item>
