@@ -67,6 +67,13 @@
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QCheckBox" name="vegetarian_checkBox">
+       <property name="text">
+        <string>Vegetarian</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

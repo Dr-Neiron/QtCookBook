@@ -15,64 +15,69 @@
         <translation>Название блюда</translation>
     </message>
     <message>
-        <location filename="detaileddialog.ui" line="102"/>
+        <location filename="detaileddialog.ui" line="73"/>
+        <source>Vegetarian</source>
+        <translation>Вегетарианское</translation>
+    </message>
+    <message>
+        <location filename="detaileddialog.ui" line="109"/>
         <source>No image</source>
         <translation>Нет изображения</translation>
     </message>
     <message>
-        <location filename="detaileddialog.ui" line="112"/>
+        <location filename="detaileddialog.ui" line="119"/>
         <source>Upload image...</source>
         <translation>Загрузить изображение...</translation>
     </message>
     <message>
-        <location filename="detaileddialog.ui" line="204"/>
+        <location filename="detaileddialog.ui" line="211"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="detaileddialog.ui" line="227"/>
+        <location filename="detaileddialog.ui" line="234"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="detaileddialog.ui" line="133"/>
+        <location filename="detaileddialog.ui" line="140"/>
         <source>Consist</source>
         <translation>Состав</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="33"/>
-        <location filename="detaileddialog.cpp" line="86"/>
+        <location filename="detaileddialog.cpp" line="35"/>
+        <location filename="detaileddialog.cpp" line="89"/>
         <source>Remove from favorites</source>
         <translation>Удалить из избранного</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="66"/>
+        <location filename="detaileddialog.cpp" line="69"/>
         <source>Consistence:</source>
         <translation>Состав:</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="68"/>
+        <location filename="detaileddialog.cpp" line="71"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="73"/>
+        <location filename="detaileddialog.cpp" line="76"/>
         <source>Print reciept</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="97"/>
+        <location filename="detaileddialog.cpp" line="100"/>
         <source>Open image file</source>
         <translation>Открыть файл с изображением</translation>
     </message>
     <message>
-        <location filename="detaileddialog.cpp" line="99"/>
+        <location filename="detaileddialog.cpp" line="102"/>
         <source>Images (*.bmp *.jpg *.jpeg *.gif *.png *.xpm)</source>
         <translation>Изображения (*.bmp *.jpg *.jpeg *.gif *.png *.xpm)</translation>
     </message>
     <message>
-        <location filename="detaileddialog.ui" line="181"/>
-        <location filename="detaileddialog.cpp" line="91"/>
+        <location filename="detaileddialog.ui" line="188"/>
+        <location filename="detaileddialog.cpp" line="94"/>
         <source>To favorites</source>
         <translation>В избранное</translation>
     </message>
@@ -298,74 +303,74 @@
         <translation>Добро пожаловать, </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="122"/>
+        <location filename="mainwindow.cpp" line="121"/>
         <source>Product ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="123"/>
+        <location filename="mainwindow.cpp" line="122"/>
         <source>Product name</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="124"/>
+        <location filename="mainwindow.cpp" line="123"/>
         <source>Composition</source>
         <translation>Состав</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="125"/>
+        <location filename="mainwindow.cpp" line="124"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="126"/>
+        <location filename="mainwindow.cpp" line="125"/>
         <source>Duration</source>
         <translation>Длительность</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="811"/>
-        <location filename="mainwindow.cpp" line="127"/>
+        <location filename="mainwindow.cpp" line="126"/>
         <source>Season</source>
         <translation>Сезон</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="128"/>
+        <location filename="mainwindow.cpp" line="127"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="821"/>
-        <location filename="mainwindow.cpp" line="129"/>
+        <location filename="mainwindow.cpp" line="128"/>
         <source>Contry</source>
         <translation>Кухня</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="130"/>
+        <location filename="mainwindow.cpp" line="129"/>
         <source>Photo</source>
         <translation>Фото</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="131"/>
+        <location filename="mainwindow.cpp" line="130"/>
         <source>Vegetarian</source>
         <translation>Вегетарианское</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="308"/>
+        <location filename="mainwindow.cpp" line="316"/>
         <source>Adding new user error</source>
         <translation>Ошибка при добавлении нового пользователя</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="309"/>
+        <location filename="mainwindow.cpp" line="317"/>
         <source>There is an error during adding new user. Try another username or connect to your administrator</source>
         <translation>Ошибка при добавлении нового пользователя. Попробуйте другое имя или свяжитесь с вашим системным администратором</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="320"/>
+        <location filename="mainwindow.cpp" line="328"/>
         <source>About QtCookBook</source>
         <translation>О QtCookBook</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="320"/>
+        <location filename="mainwindow.cpp" line="328"/>
         <source>This program created by Mariya Tsviga</source>
         <translation>Эта программа разработана Марией Цвига</translation>
     </message>

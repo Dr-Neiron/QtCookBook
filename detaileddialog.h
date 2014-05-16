@@ -2,6 +2,7 @@
 #define DETAILEDDIALOG_H
 
 #include <QDialog>
+#include "defines.h"
 
 namespace Ui {
 class DetailedDialog;
@@ -12,15 +13,12 @@ class DetailedDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit DetailedDialog(int id, QString name, QString consist,
-                            QString description, QPixmap pic,
-                            QWidget *parent = 0);
+    explicit DetailedDialog(Defines::dish_t dish, QWidget *parent = 0);
     ~DetailedDialog();
 
     void setFavorite();
     void allowEdit();
-    void getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic,
-                 QString &imageFormat);
+    void getData(Defines::dish_t &dish, QString &imageFormat);
     bool imageWasUpdated();
     
 signals:

@@ -5,19 +5,21 @@
 #include <QFileDialog>
 #include <QDebug>
 
-DetailedDialog::DetailedDialog(int id, QString name, QString consist, QString description, QPixmap pic, QWidget *parent) :
+DetailedDialog::DetailedDialog(Defines::dish_t dish, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DetailedDialog)
 {
     ui->setupUi(this);
-    ui->name_label->setText(name);
-    ui->name_lineEdit->setText(name);
+    ui->name_label->setText(dish.name);
+    ui->name_lineEdit->setText(dish.name);
     ui->name_lineEdit->setVisible(false);
-    ui->consist_plainTextEdit->appendPlainText(consist);
-    ui->description_plainTextEdit->appendPlainText(description);
-    if (!pic.isNull())
-        ui->image_label->setPixmap(pic.scaled(ui->image_label->size()));
-    this->id = id;
+    ui->consist_plainTextEdit->appendPlainText(dish.consist);
+    ui->description_plainTextEdit->appendPlainText(dish.description);
+    ui->vegetarian_checkBox->setChecked(dish.isVegetarian);
+    ui->vegetarian_checkBox->setEnabled(false);
+    if (!dish.pixmap.isNull())
+        ui->image_label->setPixmap(dish.pixmap.scaled(ui->image_label->size()));
+    this->id = dish.id;
     ui->uploadImage_pushButton->setVisible(false);
     imageUpdated = false;
 }
@@ -40,18 +42,19 @@ void DetailedDialog::allowEdit()
     ui->name_label->setVisible(false);
     ui->name_lineEdit->setVisible(true);
     ui->uploadImage_pushButton->setVisible(true);
+    ui->vegetarian_checkBox->setEnabled(true);
 }
 
-void DetailedDialog::getData(int &id, QString &name, QString &consist, QString &description, QPixmap &pic,
-                             QString &imageFormat)
+void DetailedDialog::getData(Defines::dish_t &dish, QString &imageFormat)
 {
-    id = this->id;
-    name = ui->name_lineEdit->text();
-    consist = ui->consist_plainTextEdit->toPlainText();
-    description = ui->description_plainTextEdit->toPlainText();
+    dish.id = this->id;
+    dish.name = ui->name_lineEdit->text();
+    dish.consist = ui->consist_plainTextEdit->toPlainText();
+    dish.description = ui->description_plainTextEdit->toPlainText();
     if (ui->image_label->pixmap() != NULL)
-        pic = *(ui->image_label->pixmap());
+        dish.pixmap = *(ui->image_label->pixmap());
     imageFormat = this->imageFormat;
+    dish.isVegetarian = ui->vegetarian_checkBox->isChecked();
 }
 
 bool DetailedDialog::imageWasUpdated()

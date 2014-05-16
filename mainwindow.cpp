@@ -87,17 +87,17 @@ void MainWindow::applyFilter(filters_t filter, int id)
     case SEASON_FILTER:
     case TYPES_FILTER:
     case CONTRY_FILTER:
-    case VEGETARIAN_FILTER:
     {
         QModelIndex index = model->relationModel(filter)->index(id, 0);
         filterClass.applyNew(filter, index.data().toString());
         break;
     }
+    case VEGETARIAN_FILTER:
     case DURATION_FILTER:
         filterClass.applyNew(filter, QString::number(id,10));
         break;
     case ID_FILTER:
-        filterClass.applyNew(ID_FILTER, favorites.asSqlSet());
+        filterClass.applyNew(filter, favorites.asSqlSet());
         break;
     default:
         qDebug() << "Error argument in applyFilter(...) call:" << filter;
@@ -114,21 +114,20 @@ void MainWindow::prepareModel()
     model = new QSqlRelationalTableModel(this,db);
     model->setTable("bluda");
     model->setEditStrategy(QSqlRelationalTableModel::OnManualSubmit);
-    model->setRelation(5,QSqlRelation("seasons", "id", "name"));
-    model->setRelation(6,QSqlRelation("types", "id", "name"));
-    model->setRelation(7,QSqlRelation("contries", "id", "name"));
-    model->setRelation(9,QSqlRelation("bool_values", "val", "name"));
+    model->setRelation(DISH_TABLE_COLOMN_SEASON,    QSqlRelation("seasons", "id", "name"));
+    model->setRelation(DISH_TABLE_COLOMN_TYPE,      QSqlRelation("types", "id", "name"));
+    model->setRelation(DISH_TABLE_COLOMN_CONTRY,    QSqlRelation("contries", "id", "name"));
 
-    model->setHeaderData( 0, Qt::Horizontal, tr("Product ID") );
-    model->setHeaderData( 1, Qt::Horizontal, tr("Product name") );
-    model->setHeaderData( 2, Qt::Horizontal, tr("Composition") );
-    model->setHeaderData( 3, Qt::Horizontal, tr("Description") );
-    model->setHeaderData( 4, Qt::Horizontal, tr("Duration") );
-    model->setHeaderData( 5, Qt::Horizontal, tr("Season") );
-    model->setHeaderData( 6, Qt::Horizontal, tr("Type") );
-    model->setHeaderData( 7, Qt::Horizontal, tr("Contry") );
-    model->setHeaderData( 8, Qt::Horizontal, tr("Photo") );
-    model->setHeaderData( 9, Qt::Horizontal, tr("Vegetarian") );
+    model->setHeaderData( DISH_TABLE_COLOMN_ID         , Qt::Horizontal, tr("Product ID") );
+    model->setHeaderData( DISH_TABLE_COLOMN_NAME       , Qt::Horizontal, tr("Product name") );
+    model->setHeaderData( DISH_TABLE_COLOMN_CONSIST    , Qt::Horizontal, tr("Composition") );
+    model->setHeaderData( DISH_TABLE_COLOMN_DISCRIPTION, Qt::Horizontal, tr("Description") );
+    model->setHeaderData( DISH_TABLE_COLOMN_DURATION   , Qt::Horizontal, tr("Duration") );
+    model->setHeaderData( DISH_TABLE_COLOMN_SEASON     , Qt::Horizontal, tr("Season") );
+    model->setHeaderData( DISH_TABLE_COLOMN_TYPE       , Qt::Horizontal, tr("Type") );
+    model->setHeaderData( DISH_TABLE_COLOMN_CONTRY     , Qt::Horizontal, tr("Contry") );
+    model->setHeaderData( DISH_TABLE_COLOMN_PHOTO      , Qt::Horizontal, tr("Photo") );
+    model->setHeaderData( DISH_TABLE_COLOMN_VEGETARIAN , Qt::Horizontal, tr("Vegetarian") );
 
     ui->main_tableView->setModel(model);
     ui->main_tableView->setSortingEnabled(false);
@@ -140,29 +139,29 @@ void MainWindow::prepareModel()
 
     model->select();
     ui->main_tableView->setItemDelegate(new QSqlRelationalDelegate(ui->main_tableView));
-    ui->main_tableView->hideColumn(0);
-    ui->main_tableView->hideColumn(8);
-    ui->main_tableView->hideColumn(9);
+    ui->main_tableView->hideColumn(DISH_TABLE_COLOMN_ID);
+    ui->main_tableView->hideColumn(DISH_TABLE_COLOMN_PHOTO);
+    ui->main_tableView->hideColumn(DISH_TABLE_COLOMN_VEGETARIAN);
 
-    ui->main_tableView->setColumnWidth(0,20);
-    ui->main_tableView->setColumnWidth(1,200);
-    ui->main_tableView->setColumnWidth(2,220);
-    ui->main_tableView->setColumnWidth(3,220);
-    ui->main_tableView->setColumnWidth(4,120);
-    ui->main_tableView->setColumnWidth(5,80);
-    ui->main_tableView->setColumnWidth(6,80);
-    ui->main_tableView->setColumnWidth(7,100);
-    ui->main_tableView->setColumnWidth(8,30);
-    ui->main_tableView->setColumnWidth(9,60);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_ID         ,20);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_NAME       ,200);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_CONSIST    ,220);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_DISCRIPTION,220);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_DURATION   ,120);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_SEASON     ,80);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_TYPE       ,80);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_CONTRY     ,100);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_PHOTO      ,30);
+    ui->main_tableView->setColumnWidth(DISH_TABLE_COLOMN_VEGETARIAN ,60);
 
     ui->season_comboBox->setDisabled(true);
     ui->types_comboBox->setDisabled(true);
     ui->season_comboBox->setDisabled(true);
-    ui->season_comboBox->setModel(model->relationModel(5));
+    ui->season_comboBox->setModel(model->relationModel(DISH_TABLE_COLOMN_SEASON));
     ui->season_comboBox->setModelColumn(1);
-    ui->types_comboBox->setModel(model->relationModel(6));
+    ui->types_comboBox->setModel(model->relationModel(DISH_TABLE_COLOMN_TYPE));
     ui->types_comboBox->setModelColumn(1);
-    ui->contry_comboBox->setModel(model->relationModel(7));
+    ui->contry_comboBox->setModel(model->relationModel(DISH_TABLE_COLOMN_CONTRY));
     ui->contry_comboBox->setModelColumn(1);
     ui->season_comboBox->setDisabled(false);
     ui->types_comboBox->setDisabled(false);
@@ -196,43 +195,52 @@ void MainWindow::on_main_tableView_doubleClicked(const QModelIndex &index)
 
     QItemSelectionModel * ism = ui->main_tableView->selectionModel();
     QModelIndexList indexList = ism->selectedIndexes();
-    int id = indexList.at(0).data().toInt();
-    QByteArray pic = indexList.at(8).data().toByteArray();
+    if (indexList.size() != model->columnCount())
+    {
+        qDebug() << "Selection assert on double clicked";
+        return;
+    }
+
+    QByteArray pic = indexList.at(DISH_TABLE_COLOMN_PHOTO).data().toByteArray();
     QPixmap pixmap;
     if (!pic.isEmpty())
         pixmap.loadFromData(pic);
-    DetailedDialog detailedDialog(id,
-                                  indexList.at(1).data().toString(),
-                                  indexList.at(2).data().toString(),
-                                  indexList.at(3).data().toString(),
-                                  pixmap,
-                                  this);
-    if (favorites.inFavorites(id))
+
+    dish_t dish = { indexList.at(DISH_TABLE_COLOMN_ID).data().toInt(),
+                    indexList.at(DISH_TABLE_COLOMN_NAME).data().toString(),
+                    indexList.at(DISH_TABLE_COLOMN_CONSIST).data().toString(),
+                    indexList.at(DISH_TABLE_COLOMN_DISCRIPTION).data().toString(),
+                    pixmap,
+                    indexList.at(DISH_TABLE_COLOMN_VEGETARIAN).data().toBool()
+                  };
+
+    DetailedDialog detailedDialog(dish, this);
+    if (favorites.inFavorites(dish.id))
         detailedDialog.setFavorite();
     if (isAdminLoggedIn)
         detailedDialog.allowEdit();
     connect(&detailedDialog, SIGNAL(addingFavorite(int)), &favorites, SLOT(add(int)));
     connect(&detailedDialog, SIGNAL(remFavorite(int)), &favorites, SLOT(remove(int)));
+
     detailedDialog.exec();
+
     if (isAdminLoggedIn)
     {
-        QString name;
-        QString consist;
-        QString description;
         QString imageFormat;
-        detailedDialog.getData(id, name, consist, description, pixmap, imageFormat);
+        detailedDialog.getData(dish, imageFormat);
         QByteArray byteArray;
         if (detailedDialog.imageWasUpdated())
         {
             QBuffer buffer(&byteArray);
             buffer.open(QIODevice::WriteOnly);
-            pixmap.save(&buffer, imageFormat.toUpper().toLocal8Bit());
-            model->setData(indexList.at(8),byteArray);
+            dish.pixmap.save(&buffer, imageFormat.toUpper().toLocal8Bit());
+            model->setData(indexList.at(DISH_TABLE_COLOMN_PHOTO),byteArray);
         }
 
-        model->setData(indexList.at(1),name);
-        model->setData(indexList.at(2),consist);
-        model->setData(indexList.at(3),description);
+        model->setData(indexList.at(DISH_TABLE_COLOMN_NAME),dish.name);
+        model->setData(indexList.at(DISH_TABLE_COLOMN_CONSIST),dish.consist);
+        model->setData(indexList.at(DISH_TABLE_COLOMN_DISCRIPTION),dish.description);
+        model->setData(indexList.at(DISH_TABLE_COLOMN_VEGETARIAN), dish.isVegetarian);
         on_save_pushButton_clicked();
     }
     if (ui->favorite_pushButton->isChecked())
